@@ -24,7 +24,7 @@ export function isNonTextNode(node: any): boolean {
 }
 
 export function isText(node: any): boolean {
-  return !isNonTextNode(node) && 'text' in node
+  return (!isNonTextNode(node) && 'text' in node) || 'paragraphs' in node
 }
 
 export function structuredTextToString(value: any): string {
@@ -33,6 +33,10 @@ export function structuredTextToString(value: any): string {
   visit(value, (node) => {
     if (!isText(node)) {
       return
+    }
+
+    if (node.paragraphs) {
+      result += `\n${node.paragraphs} `
     }
 
     if (node.text) {
