@@ -204,7 +204,6 @@ export default function FieldAddon({ ctx }: Props) {
       specialCharacters,
       sentences,
       paragraphs,
-      commonWords,
       readingTime,
     } = fieldStats
 
@@ -214,7 +213,6 @@ export default function FieldAddon({ ctx }: Props) {
       specialCharacters,
       sentences,
       paragraphs,
-      commonWords,
       readingTime,
       settings: {
         includeSpace: showSpaces,
@@ -229,7 +227,6 @@ export default function FieldAddon({ ctx }: Props) {
         specialCharacters:
           fieldStats.specialCharactersExcludingSpacesAndHTMLElements,
         words: fieldStats.wordsExcludingHTMLElements,
-        commonWords: fieldStats.commonWordsExcludingHTMLElements,
       }
     }
 
@@ -247,7 +244,6 @@ export default function FieldAddon({ ctx }: Props) {
         words: fieldStats.wordsExcludingHTMLElements,
         characters: fieldStats.charactersExcludingHTMLElements,
         specialCharacters: fieldStats.specialCharactersExcludingHTMLElements,
-        commonWords: fieldStats.commonWordsExcludingHTMLElements,
       }
     }
 
@@ -443,47 +439,6 @@ export default function FieldAddon({ ctx }: Props) {
                 onChange={() => setShowHTML(!showHTML)}
               />
             </div>
-          )}
-
-          {calculationsSettings.some(
-            (setting) =>
-              setting.value === calculationsConstants.showCommonWords,
-          ) && (
-            <>
-              <button
-                className={styles.button}
-                onClick={() => {
-                  setShowCommonWords(!showCommonWords)
-                  if (showCommonWords) {
-                    setTimeout(() => {
-                      ctx.updateHeight(0)
-                    }, 1)
-                  }
-                }}
-              >
-                {showCommonWords ? (
-                  <CaretUpIcon className={styles.buttonIcon} />
-                ) : (
-                  <CaretDownIcon className={styles.buttonIcon} />
-                )}
-                <span className="h2">
-                  {`Common words (${
-                    Object.keys(wordCount.commonWords).length
-                  })`}
-                </span>
-              </button>
-
-              {showCommonWords && (
-                <StatsList list>
-                  {Object.keys(wordCount.commonWords).map((word) => (
-                    <Fragment key={word}>
-                      <dt>{word}</dt>
-                      <dd>{wordCount.commonWords[word]}</dd>
-                    </Fragment>
-                  ))}
-                </StatsList>
-              )}
-            </>
           )}
         </>
       )}

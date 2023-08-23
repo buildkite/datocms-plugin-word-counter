@@ -11,8 +11,6 @@ export type CountObject = {
   specialCharactersExcludingSpacesAndHTMLElements: number
   sentences: number
   paragraphs: number
-  commonWords: CommonWordsObject
-  commonWordsExcludingHTMLElements: CommonWordsObject
   readingTime: string
 }
 
@@ -23,17 +21,12 @@ export type SavingCountObject = Pick<
   | 'specialCharacters'
   | 'sentences'
   | 'paragraphs'
-  | 'commonWords'
   | 'readingTime'
 > & {
   settings: {
     includeSpace: boolean
     includeHTML: boolean
   }
-}
-
-export type CommonWordsObject = {
-  [key: string]: number
 }
 
 export type SettingOption = {

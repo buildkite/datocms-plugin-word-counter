@@ -30,8 +30,6 @@ export default function counter(string: string): CountObject {
     ),
     sentences: sentencesCounter(string),
     paragraphs: paragraphsCounter(string),
-    commonWords: commonWords(string),
-    commonWordsExcludingHTMLElements: commonWords(stringExcludingHTMLElements),
     readingTime: readingTimeCounter(string),
   }
 }
