@@ -1,4 +1,4 @@
-import { CountObject, CommonWordsObject } from './types'
+import { CountObject } from './types'
 import { wordsPerMinute, htmlElements } from './constants'
 
 export default function counter(string: string): CountObject {
@@ -68,32 +68,6 @@ function paragraphsCounter(string: string): number {
   const paragraphRegex = /[\n]/
   const paragraphs = string.split(paragraphRegex).filter(hasNoSpace)
   return paragraphs.length
-}
-
-function commonWords(string: string): CommonWordsObject {
-  const wordRegex = /[ \n]/
-  const words = string.split(wordRegex)
-  const normalizedWords = words
-    .map((word) =>
-      word
-        .replace(/["|'-(){}[\]]/g, '')
-        .replace(/[.,!?;:]\s*$/, '')
-        .toLowerCase(),
-    )
-    .sort()
-    .filter(hasNoSpace)
-
-  const wordCount = normalizedWords.reduce(
-    (acc: CommonWordsObject, word: string) => {
-      acc[word] = (acc[word] || 0) + 1
-      return acc
-    },
-    {},
-  )
-
-  return Object.entries(wordCount)
-    .sort(([, a]: any, [, b]: any) => b - a)
-    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
 }
 
 function readingTimeCounter(string: string): string {

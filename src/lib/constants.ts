@@ -14,7 +14,6 @@ export const calculationsConstants = {
   numberOfSpecialCharacters: '2',
   numberOfSentences: '3',
   numberOfParagraphs: '4',
-  showCommonWords: '5',
   readingTime: '6',
 }
 
@@ -36,7 +35,6 @@ export const calculationsOptions = [
     value: calculationsConstants.numberOfParagraphs,
   },
   { label: 'Reading time', value: calculationsConstants.readingTime },
-  { label: 'Show common words', value: calculationsConstants.showCommonWords },
 ]
 
 export const spaceConstants = {

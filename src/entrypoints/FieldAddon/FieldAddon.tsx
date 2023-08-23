@@ -195,7 +195,6 @@ export default function FieldAddon({ ctx }: Props) {
           htmlSettings.value !== htmlConstants.excludeHTML,
   )
   const [showInfo, setShowInfo] = useState<boolean>(false)
-  const [showCommonWords, setShowCommonWords] = useState<boolean>(false)
 
   const wordCount: SavingCountObject = useMemo(() => {
     const {
