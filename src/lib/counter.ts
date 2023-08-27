@@ -82,17 +82,17 @@ function readingTimeCounter(string: string): string {
     const readingTimePerSecond = (readingTimePerMinute * 60) % 60
 
     if (readingTimePerSecond >= 1 && readingTimePerSecond < 2) {
-      return '~ 1 second'
+      return '1 second'
     } else if (readingTimePerSecond >= 2) {
-      return `~ ${Math.floor(readingTimePerSecond)} seconds`
+      return `${Math.floor(readingTimePerSecond)} seconds`
     }
 
     return '< 1 second'
   } else if (readingTimePerMinute >= 0.95 && readingTimePerMinute <= 1.5) {
-    return '~ 1 minute'
+    return '1 minute'
   }
 
-  return `~ ${Math.ceil(readingTimePerMinute)} minutes`
+  return `${Math.ceil(readingTimePerMinute)} minutes`
 }
 
 function hasNoSpace(word: string): boolean {
